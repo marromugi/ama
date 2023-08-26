@@ -1,5 +1,5 @@
 import { clientSupabase } from "@/libs/supabase/client";
-import useSWR from "swr";
+import { useFetch } from "@/libs/swr";
 
 const getUser = async () => {
   const res = await clientSupabase.auth.getUser();
@@ -7,7 +7,7 @@ const getUser = async () => {
 };
 
 export const useUser = () => {
-  const res = useSWR({
+  const res = useFetch({
     key: "user",
     fetcher: async () => await getUser(),
     config: {},
