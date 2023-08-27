@@ -1,5 +1,3 @@
-"use client";
-
 import { PublicConfiguration, FetcherResponse } from "swr/_internal";
 import useSWR from "swr";
 
@@ -15,4 +13,13 @@ export const useFetch = <T>({
         PublicConfiguration<T, any, (arg: string) => FetcherResponse<T>>
       >
     | undefined;
-}) => useSWR(key, async () => fetcher(), config);
+}) => {
+  const res = useSWR(key, async () => fetcher(), config);
+  return {
+    result: res.data,
+    error: res.error,
+    mutate: res.mutate,
+    loading: res.isLoading,
+    validating: res.isValidating,
+  };
+};

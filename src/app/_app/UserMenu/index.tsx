@@ -1,16 +1,16 @@
 "use client";
 
-import { useUser } from "@/hooks/user/client";
+import { useUser } from "@/hooks/user";
 
 export const UserMenu = ({
   children,
 }: {
   children?: React.ReactNode;
 }) => {
-  const { data } = useUser();
+  const { result } = useUser();
   return (
     <>
-      <p>UserMenu: {data?.user?.email}</p>
+      <p>UserMenu: {result?.data.user?.email}</p>
       {children && <div>child: {children}</div>}
     </>
   );
