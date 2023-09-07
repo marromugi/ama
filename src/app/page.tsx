@@ -1,5 +1,5 @@
 import { use } from "react";
-import { UserMenu } from "./_app/UserMenu";
+import { UserMenu } from "./_components/UserMenu";
 import { UserSupabase } from "@/libs/supabase/user/server";
 
 export default async function Home() {

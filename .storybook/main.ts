@@ -1,5 +1,7 @@
 import type { StorybookConfig } from "@storybook/nextjs";
 
+const path = require("path");
+
 const config: StorybookConfig = {
   stories: [
     "../src/**/*.mdx",
@@ -21,6 +23,16 @@ const config: StorybookConfig = {
       },
     },
   ],
+  webpackFinal(config) {
+    if (!config.resolve) {
+      return config;
+    }
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      "@": path.resolve(__dirname, "../src"),
+    };
+    return config;
+  },
   framework: {
     name: "@storybook/nextjs",
     options: {},

@@ -7,7 +7,11 @@ import { SWRConfig } from "swr";
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const Layout = ({ children }: { children: React.ReactNode }) => {
+export const Layout = async ({
+  children,
+}: {
+  children: React.ReactNode;
+}) => {
   return (
     <SWRConfig value={swrBaseConfig?.value}>
       <html lang="ja">
